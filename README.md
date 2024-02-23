@@ -1,0 +1,11 @@
+Este código é um script de monitoramento de rede escrito em Python que usa a biblioteca Scapy para capturar e analisar o tráfego HTTP. Aqui está uma descrição técnica do que o código faz:
+
+Importação de módulos: O script começa importando vários módulos Python necessários, incluindo os, platform, subprocess e vários módulos do pacote scapy.
+Definição de variáveis globais: Em seguida, ele define um dicionário global websites_accessed para armazenar as URLs acessadas por cada dispositivo na rede.
+Função ping: Esta função verifica a disponibilidade de um host na rede usando o comando ping. Ela usa o módulo subprocess para executar o comando ping e retorna True se o host estiver disponível e False caso contrário.
+Função capture_http_traffic: Esta função é usada para capturar e analisar o tráfego HTTP. Ela é chamada para cada pacote que corresponde ao filtro definido na função sniff. Se o pacote contém uma solicitação HTTP, a função extrai o endereço IP de origem e a URL acessada e armazena essas informações no dicionário websites_accessed.
+Monitoramento de tráfego HTTP: O script inicia o monitoramento do tráfego HTTP usando a função sniff do Scapy. Ele configura a função para chamar capture_http_traffic para cada pacote que corresponde ao filtro “tcp port 80 or tcp port 443”.
+Verificação de disponibilidade de hosts: O script verifica a disponibilidade de cada host na lista hosts usando a função ping. Para cada host que está online, ele imprime as URLs acessadas pelo host.
+Função start_traffic_capture: Esta função inicia a captura de tráfego de rede em tempo real, chamando a função sniff com um filtro para capturar apenas o tráfego na porta TCP 80.
+Impressão de websites acessados: Por fim, o script imprime as URLs acessadas por cada dispositivo na rede.
+Em resumo, este script monitora o tráfego HTTP na rede, registra as URLs acessadas por cada dispositivo e verifica periodicamente a disponibilidade dos hosts. Ele pode ser útil para monitorar a atividade da rede em um ambiente de rede local.
